@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Form from "react-bootstrap/Form";
 
-function FacilityModal() {
+function FacilityModal({ isOpen, closeCB }) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  useEffect(() => {
+    console.log("Prop isOpen changed -> ", isOpen);
+    setIsOpen(isOpen);
+  }, [isOpen]);
 
   function openModal() {
     setIsOpen(true);
@@ -17,18 +22,18 @@ function FacilityModal() {
 
   function closeModal() {
     setIsOpen(false);
+    closeCB();
   }
 
   function saveFacility() {
     //send save request
     //if save request is fine, close modal
-    setIsOpen(false);
+    closeModal();
     //else error toaster
   }
 
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}

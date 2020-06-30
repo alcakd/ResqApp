@@ -2,8 +2,24 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-function SearchBar() {
-  return <div>Search Bar</div>;
+function SearchBar({ searchCB }) {
+  function handleChange(event) {
+    console.log("SearchBar handleChange()");
+    setSearchTerm(event.target.value);
+    searchCB(event.target.value);
+  }
+  const [searchTerm, setSearchTerm] = React.useState("");
+
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="Search"
+        onChange={handleChange}
+        value={searchTerm}
+      ></input>
+    </div>
+  );
 }
 
 export default SearchBar;

@@ -3,11 +3,13 @@ import "./App.css";
 import SearchBar from "./SearchBar.js";
 import ButtonAdd from "./ButtonAdd.js";
 
-function HeaderBar() {
+function HeaderBar({ clickHandler, refreshHandler, searchCB }) {
   return (
     <div>
-      <SearchBar></SearchBar>
-      <ButtonAdd></ButtonAdd>
+      <SearchBar searchCB={searchCB}></SearchBar>
+      <button onClick={refreshHandler}>Refresh</button>
+      {/* How do you avoid passing down callbacks */}
+      <ButtonAdd clickHandler={clickHandler} label={"+"}></ButtonAdd>
     </div>
   );
 }
