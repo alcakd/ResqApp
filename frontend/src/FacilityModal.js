@@ -22,7 +22,8 @@ function FacilityModal({ isOpen, closeCB }) {
 
   function closeModal() {
     setIsOpen(false);
-    closeCB();
+
+    closeCB({ facilityObject: "value" });
   }
 
   function saveFacility() {

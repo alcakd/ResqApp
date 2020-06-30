@@ -29,13 +29,13 @@ function App() {
     {
       id: 2,
       name: "Facility name 3",
-      address: "789 Fake Street",
+      address: "789 Toronto Street",
       size: "Large",
     },
     {
       id: 3,
       name: "Facility name 4",
-      address: "101 Fake Street",
+      address: "101 Toronto Street",
       size: "Small",
     },
   ];

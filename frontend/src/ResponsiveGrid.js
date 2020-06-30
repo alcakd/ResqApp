@@ -1,8 +1,31 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-function ResponsiveGrid({ data }) {
-  console.log("Rendering in grid:", data);
+function ResponsiveGrid({ data, searchValue }) {
+  console.log("Rendering in grid:", searchValue, data);
+  let dataToRender;
+
+  if (searchValue) {
+    searchValue = searchValue.toLowerCase();
+    //Separate search tokens by space, remove whitespaces from tokens
+    let searchTokens = searchValue.split(" ").filter((e) => String(e).trim());
+    console.log("searchTokens", searchTokens);
+    dataToRender = data.filter((ele) => {
+      for (let token of searchTokens) {
+        console.log("looking at token", token);
+        if (
+          ele.name.toLowerCase().includes(token) ||
+          ele.address.toLowerCase().includes(token) ||
+          ele.size.toLowerCase().includes(token)
+        ) {
+          return true;
+        }
+      }
+      return false;
+    });
+  } else {
+    dataToRender = data;
+  }
 
   //Oh boy this was a waste of time
   //   let rows = [];
@@ -32,7 +55,7 @@ function ResponsiveGrid({ data }) {
   return (
     <Container>
       <Row>
-        {data.map(function (ele, index) {
+        {dataToRender.map(function (ele, index) {
           return (
             <Col xs={6} md={4}>
               <div>{ele.name}</div>
