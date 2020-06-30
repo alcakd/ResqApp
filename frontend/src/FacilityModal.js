@@ -22,13 +22,14 @@ function FacilityModal({ isOpen, closeCB }) {
 
   function closeModal() {
     setIsOpen(false);
-
-    closeCB({ facilityObject: "value" });
   }
 
   function saveFacility() {
     //send save request
+    var promise = closeCB({ facilityObject: "value" });
+
     //if save request is fine, close modal
+    // if (promise)
     closeModal();
     //else error toaster
   }

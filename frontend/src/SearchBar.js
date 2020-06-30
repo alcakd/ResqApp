@@ -11,14 +11,12 @@ function SearchBar({ searchCB }) {
   const [searchTerm, setSearchTerm] = React.useState("");
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Search"
-        onChange={handleChange}
-        value={searchTerm}
-      ></input>
-    </div>
+    <input
+      type="text"
+      placeholder="Search"
+      onChange={handleChange}
+      value={searchTerm}
+    ></input>
   );
 }
 

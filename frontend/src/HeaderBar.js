@@ -6,10 +6,16 @@ import ButtonAdd from "./ButtonAdd.js";
 function HeaderBar({ clickHandler, refreshHandler, searchCB }) {
   return (
     <div>
-      <SearchBar searchCB={searchCB}></SearchBar>
-      <button onClick={refreshHandler}>Refresh</button>
+      <SearchBar className="m-1" searchCB={searchCB}></SearchBar>
+      <button className="m-1" onClick={refreshHandler}>
+        Refresh
+      </button>
       {/* How do you avoid passing down callbacks */}
-      <ButtonAdd clickHandler={clickHandler} label={"+"}></ButtonAdd>
+      <ButtonAdd
+        className="m-1"
+        clickHandler={clickHandler}
+        label={"+"}
+      ></ButtonAdd>
     </div>
   );
 }

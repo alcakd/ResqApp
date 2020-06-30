@@ -45,13 +45,14 @@ function App() {
     setIsOpen(true);
   }
 
-  function handleClose() {
-    console.log("closeHandler() called");
+  function handleClose(facility) {
+    console.log("closeHandler() called", facility);
     setIsOpen(false);
   }
 
   function handleRefresh() {
     console.log("handleRefresh() called");
+    //make axios call to refresh
   }
 
   function handleSearch(searchValue) {
