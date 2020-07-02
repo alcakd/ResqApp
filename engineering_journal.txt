@@ -39,3 +39,7 @@ After accidentally adding a infinite loop via useEffect, the front end Docker co
 Restarting it, even after fixing the issue, results in failure to fetch the frontend files from localhost:3000
 After some debugging (by trial and error), it turns out it was my Chrome browser having some sort of issue.
 Restarting the Browser and killing straggling processes fixed it.
+
+Django---
+Django routing seems to have been overriden somewhere from it's default, as I can't access /admin or /fakeendpoint
+without it routing back to /

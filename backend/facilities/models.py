@@ -6,3 +6,5 @@ class Facility(models.Model):
     address = models.TextField()
     size = models.TextField()
     last_modified = models.DateTimeField(auto_now_add=True)
+
+#update and clean up model field types

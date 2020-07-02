@@ -15,6 +15,11 @@ Including another URLconf
 """
 
 from django.urls import path
+from django.contrib import admin
+from facilities.views import FacilityCreateAPIView
 
-urlpatterns = []
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/facility/get', FacilityCreateAPIView.as_view(), name='facility-get'),
+]
 
