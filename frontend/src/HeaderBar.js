@@ -1,21 +1,34 @@
 import React from "react";
 import "./App.css";
 import SearchBar from "./SearchBar.js";
-import ButtonAdd from "./ButtonAdd.js";
+import FacilityModal from "./FacilityModal.js";
+import { openModal, updateFacilityListData } from "./Redux.js";
+import { useDispatch } from "react-redux";
+import { GET_facilityListData } from "./APIConsumers.js";
 
-function HeaderBar({ clickHandler, refreshHandler, searchCB }) {
+function HeaderBar({ searchCB }) {
+  const dispatch = useDispatch();
+  function addButtonClickHandler() {
+    console.log("clickHandler inside HeaderBar");
+    dispatch(openModal());
+  }
+
+  function refreshClickHandler() {
+    //fetch data and set it in store
+    let facilityData = GET_facilityListData();
+    dispatch(updateFacilityListData(facilityData));
+  }
+
   return (
     <div>
       <SearchBar className="m-1" searchCB={searchCB}></SearchBar>
-      <button className="m-1" onClick={refreshHandler}>
+      <button className="m-1" onClick={refreshClickHandler}>
         Refresh
       </button>
-      {/* How do you avoid passing down callbacks */}
-      <ButtonAdd
-        className="m-1"
-        clickHandler={clickHandler}
-        label={"+"}
-      ></ButtonAdd>
+      <button className="m-1" onClick={addButtonClickHandler}>
+        +
+      </button>
+      <FacilityModal></FacilityModal>
     </div>
   );
 }

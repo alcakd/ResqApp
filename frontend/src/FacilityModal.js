@@ -1,58 +1,74 @@
-import React, { useState, useEffect } from "react";
+import React /*, { useState, useEffect }*/ from "react";
 import Modal from "react-modal";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import Form from "react-bootstrap/Form";
+import { closeModal } from "./Redux.js";
+import { useSelector, useDispatch } from "react-redux";
+import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
+import { POST_newFacility } from "./APIConsumers.js";
 
-function FacilityModal({ isOpen, closeCB }) {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+function FacilityModal() {
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log("Prop isOpen changed -> ", isOpen);
-    setIsOpen(isOpen);
-  }, [isOpen]);
-
-  function openModal() {
-    setIsOpen(true);
-  }
+  const isOpen = useSelector((state) => {
+    // console.log("What is useSelector state?", state);
+    return state.modalState;
+  });
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
   }
 
-  function closeModal() {
-    setIsOpen(false);
+  function closeModalClickHandler() {
+    console.log("closeModal() inside facilityModal");
+    dispatch(closeModal());
   }
 
   function saveFacility() {
-    //send save request
-    var promise = closeCB({ facilityObject: "value" });
+    console.log("saveFacility()");
+    POST_newFacility();
+    //send save request POST_newFacility
+    //data
 
     //if save request is fine, close modal
     // if (promise)
-    closeModal();
     //else error toaster
+    dispatch(closeModal());
   }
 
   return (
     <div>
       <Modal
-        isOpen={modalIsOpen}
+        isOpen={isOpen}
         onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
+        onRequestClose={closeModalClickHandler}
         // style={customStyles}
         contentLabel="Example Modal"
       >
-        <button onClick={closeModal}>close</button>
-        <div>Enter facility details</div>
+        <Button
+          className="my-1"
+          variant="dark"
+          onClick={closeModalClickHandler}
+        >
+          Close
+        </Button>
+        <Alert variant="primary">Enter facility details</Alert>
         <form>
           <div>
-            <label>Name</label>
-            <input placeholder="John Doe"></input>
+            <label for="nameInputId">Name</label>
+            <input
+              id="nameInputId"
+              class="form-control"
+              placeholder="John Doe"
+            ></input>
           </div>
           <div>
-            <label>Street Address</label>
-            <input placeholder="123 Fake St"></input>
+            <label for="streetAddressId">Street Address</label>
+            <input
+              id="streetAddressId"
+              class="form-control"
+              placeholder="123 Fake St"
+            ></input>
           </div>
           <div>
             <label>Size</label>
@@ -64,7 +80,9 @@ function FacilityModal({ isOpen, closeCB }) {
             </Form.Control>
           </div>
         </form>
-        <button onClick={saveFacility}>Save</button>
+        <Button className="my-1" variant="success" onClick={saveFacility}>
+          Save
+        </Button>
       </Modal>
     </div>
   );

@@ -1,0 +1,36 @@
+June 29
+Started on the project, realized that my 'hacked up' Docker system using VirtualBox
+broke some time over the last week and had to fix that.
+
+Made steady progress, hackathon style, on getting the UI built out. I'm not sure how much
+we're expected to build things from "base principles" to show knowledge versus
+using out-of-the-box solutions (such as https://devexpress.github.io/devextreme-reactive/react/grid/docs/guides/searching/)
+
+I decided to build it from base principles as both a showcase and to brush up React.
+
+While building the UI I realized that working on an existing codebase is very different
+than building entirely new one. Second guessing a lot of decisions and 'proper' design.
+I got a function UI to work but it feels (too) scrappy, so I've refactored some parts.
+
+Now that I'm moving onto the backend, I realized that my zero-knowledge of Django and working
+with somebody else's Dockerfile has knee capped me. Decided to "suck up my pride" and reach out to Bob
+for a hint, and took up Vikram's offer to reschedule to Thurs.
+
+June 30
+Something that's been bothering me is how I'm moving data. I sketched out a few diagrams and it feels
+silly that we're communicating data so far up-and-down components. I realize this is how many
+of existing codebases have functioned but this feels smelly.
+
+This video https://youtu.be/CVpUuw9XSjY?t=240 describes my problem perfectly.
+
+I'm going to spend some time to apply React-Redux to this to make a better state system.
+
+Something interesting that happened: live updates to react code broke suddenly when
+I switched from jshint (which doesnt interpret JSX correctly) to eslint.
+> "Could not open App.js in the editor." To set up the editor integration, add something like REACT_EDITOR=atom to the .env.local file
+
+July 1
+Happy Canada Day!
+I came back, applied a bunch of learnings of Redux to tidy up state management.
+It was a big initial learning curve and time cost to set up the boilerplate, but the state management is a lot cleaner.
+I tidied up the UI as well, hooked everything up to a mocked API consumer utility, and am now working on Django.

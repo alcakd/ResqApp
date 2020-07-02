@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+// import { GET_facilityListData } from "./APIConsumers.js";
+// import { updateFacilityListData } from "./Redux.js";
 
-function ResponsiveGrid({ data, searchValue }) {
+function ResponsiveGrid({ searchValue }) {
+  console.log("Hello?");
+  const dispatch = useDispatch();
+
+  let data = useSelector((state) => {
+    return state.facilityListData;
+  });
+
+  //   useEffect(() => {
+  //     console.log("useEffect / onComponentMount");
+  //     data = GET_facilityListData();
+  //     dispatch(updateFacilityListData(data));
+  //   }, [data]);
+
   console.log("Rendering in grid:", searchValue, data);
   let dataToRender;
 
@@ -26,6 +42,10 @@ function ResponsiveGrid({ data, searchValue }) {
   } else {
     dataToRender = data;
   }
+
+  //componentDidMount -> fetch data from backend
+
+  //listen to the dataStore and update data if needed
 
   //Oh boy this was a waste of time
   //   let rows = [];
@@ -57,7 +77,7 @@ function ResponsiveGrid({ data, searchValue }) {
       <Row>
         {dataToRender.map(function (ele, index) {
           return (
-            <Col xs={6} md={4} className="my-3">
+            <Col xs={6} md={4} className="my-3" key={ele.id}>
               <div>{ele.name}</div>
               <div>{ele.address}</div>
               <div>{ele.size}</div>
