@@ -43,3 +43,13 @@ Restarting the Browser and killing straggling processes fixed it.
 Django---
 Django routing seems to have been overriden somewhere from it's default, as I can't access /admin or /fakeendpoint
 without it routing back to /
+
+It feels like it could have been more clear the difference between the view sets, and it seems un-pythonic
+to have every tutorial implement the CRUD API in a different manner.
+
+Nonetheless I finally wrapped my head around it. Now I realized that I need to add CORS whitelist so I can go from
+my port:3000 to port:8000. Adding corsheader is proving to be more challenging than I thought.
+
+    raise ValueError("Not a valid python path: %r" % path)
+ValueError: Not a valid python path: 'C:/Python26/Scripts/python.exe'
+PS D:\Downloads\resq-takehome-starter\backend> pipenv install django-cors-headers

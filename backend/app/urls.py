@@ -16,10 +16,13 @@ Including another URLconf
 
 from django.urls import path
 from django.contrib import admin
-from facilities.views import FacilityCreateAPIView
+from facilities.views import FacilityCLView
+from facilities.views import FacilityRUDView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/facility/get', FacilityCreateAPIView.as_view(), name='facility-get'),
+    path('facilities/list', FacilityCLView.as_view(), name='facility_list'),
+    path('facilities/<int:id>/', FacilityRUDView.as_view(), name='facility_API_view')
 ]
 

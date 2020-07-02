@@ -1,4 +1,12 @@
+import axios from "axios";
+
+const api_url = "localhost:8000";
+
 function GET_facilityListData() {
+  axios.get(`http://localhost:8000/facilities/list`).then((res) => {
+    const facilityListData = res.data;
+    console.log("facilityList data", facilityListData);
+  });
   console.log("GET_facilityListData");
   return [
     {
