@@ -1,4 +1,4 @@
-import React /*, { useState, useEffect }*/ from "react";
+import React, { useEffect /*, { useState, useEffect }*/ } from "react";
 import Modal from "react-modal";
 import Form from "react-bootstrap/Form";
 import { closeModal } from "./Redux.js";
@@ -36,6 +36,8 @@ function FacilityModal() {
     dispatch(closeModal());
   }
 
+  //useEffect and Modal.setAppElement("#appElement"); for screen writer help
+
   return (
     <div>
       <Modal
@@ -58,7 +60,7 @@ function FacilityModal() {
             <label for="nameInputId">Name</label>
             <input
               id="nameInputId"
-              class="form-control"
+              className="form-control"
               placeholder="John Doe"
             ></input>
           </div>
@@ -66,7 +68,7 @@ function FacilityModal() {
             <label for="streetAddressId">Street Address</label>
             <input
               id="streetAddressId"
-              class="form-control"
+              className="form-control"
               placeholder="123 Fake St"
             ></input>
           </div>

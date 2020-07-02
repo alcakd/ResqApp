@@ -34,3 +34,8 @@ Happy Canada Day!
 I came back, applied a bunch of learnings of Redux to tidy up state management.
 It was a big initial learning curve and time cost to set up the boilerplate, but the state management is a lot cleaner.
 I tidied up the UI as well, hooked everything up to a mocked API consumer utility, and am now working on Django.
+
+After accidentally adding a infinite loop via useEffect, the front end Docker container is now broken (?).
+Restarting it, even after fixing the issue, results in failure to fetch the frontend files from localhost:3000
+After some debugging (by trial and error), it turns out it was my Chrome browser having some sort of issue.
+Restarting the Browser and killing straggling processes fixed it.
