@@ -12,11 +12,16 @@ class Facility(models.Model):
 # class Facility(models.Model):
 #     name = models.CharField(max_length=200)
 #     address = models.CharField(max_length=200)
-#     size = models.ForeignKey(FacilitySize)
 #     last_modified = models.DateTimeField(auto_now_add=True)
+#     SIZE_CHOICES = [('SML', 'Small'), ('MED': 'Medium'), ('LRG', 'Large') ]
+#     size = models.CharField(
+#       max_length=200
+#       choices=SIZE_CHOICES
+#     )
+#     or size can be foreign key to FacilitySize depending on how hardcoded or programmatic you'd like
 
 # class FacilitySize(models.Model):
 #     name = models.CharField(max_length=200)
-#     description = models.CharField(max_length=200)
+#     description = models.CharField()
 
 #update and clean up model field types

@@ -1,13 +1,13 @@
 import axios from "axios";
 
-const api_url = "localhost:8000";
+const API_URL = "localhost:8000";
 
 function GET_facilityListData() {
-  axios.get(`http://localhost:8000/facilities/list`).then((res) => {
-    const facilityListData = res.data;
-    console.log("facilityList data", facilityListData);
-  });
+  //async
+  var promise = axios.get(`${API_URL}/facilities/list`);
   console.log("GET_facilityListData");
+
+  //return axios GET promise;
   return [
     {
       id: 0,
@@ -36,9 +36,18 @@ function GET_facilityListData() {
   ];
 }
 
-function POST_newFacility() {
+//async
+function POST_newFacility(newFacility) {
+  var promise = axios.post(`${API_URL}/facilities/list`, { data: newFacility });
+  //return axios POST promise
+
   console.log("POST_newFacility()");
   return "done";
 }
+
+/* .then((res) => {
+    const facilityListData = res.data;
+    console.log("facilityList data", facilityListData);
+  }); */
 
 export { GET_facilityListData, POST_newFacility };

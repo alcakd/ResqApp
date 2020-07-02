@@ -14,8 +14,10 @@ function HeaderBar({ searchCB }) {
   }
 
   function refreshClickHandler() {
+    //async
     //fetch data and set it in store
     let facilityData = GET_facilityListData();
+    //let facilityData = await GET_facilityListData();
     dispatch(updateFacilityListData(facilityData));
   }
 
